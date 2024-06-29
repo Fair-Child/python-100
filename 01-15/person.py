@@ -29,14 +29,51 @@ class Person(object):
             print('%s正在玩斗地主.' % self._name)
 
 
+class Student(Person):
+    """学生"""
+
+    def __init__(self, name, age, grade):
+        super().__init__(name, age)
+        self._grade = grade
+
+    @property
+    def grade(self):
+        return self._grade
+
+    @grade.setter
+    def grade(self, grade):
+        self._grade = grade
+
+    def study(self, course):
+        print('%s的%s正在学习%s.' % (self._grade, self._name, course))
+
+
+class Teacher(Person):
+    """老师"""
+
+    def __init__(self, name, age, title):
+        super().__init__(name, age)
+        self._title = title
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._title = title
+
+    def teach(self, course):
+        print('%s%s正在讲%s.' % (self._name, self._title, course))
+
+
 def main():
-    person = Person('王大锤', 12)
-    person.play()
-    person.age = 22
-    person.play()
-    # person.name = '白元芳'  # AttributeError: can't set attribute
-    # AttributeError: 'Person' object has no attribute '_is_gay'
-    # person._is_gay = True
+    stu = Student('王大锤', 15, '初三')
+    stu.study('数学')
+    
+    t = Teacher('骆昊', 38, '砖家')
+    t.teach('Python程序设计')
+    
 
 
 if __name__ == '__main__':
